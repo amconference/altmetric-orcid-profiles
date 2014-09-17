@@ -136,8 +136,6 @@ GEM
     tilt (1.4.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    zepto-rails (0.1.0)
-      jquery-rails (~> 2.0.2)
 
 PLATFORMS
   ruby
@@ -147,8 +145,9 @@ DEPENDENCIES
   coffee-rails
   compass-rails
   haml-rails
+  jquery-rails
+  nokogiri
   rails (= 4.2.0.beta1)
   redis
   sass-rails (~> 5.0.0.beta1)
   spring
-  zepto-rails

@@ -1,0 +1,64 @@
+#orcid-profile-results,
+#orcid-profile-results-loading
+  display: none
+
+.loader_wrapper
+  position: absolute
+  top: 120px
+  +animation(animball_two 700ms infinite ease-in-out)
+  width: 44px
+  height: 44px
+
+.loader_element
+  width: 44px
+  height: 44px
+  position: absolute
+
+.ball
+  width: 20px
+  height: 20px
+  border-radius: 50%
+  position: absolute
+
+.ball_1, .ball_2, .ball_3, .ball_4
+  +animation(animball_one 700ms infinite ease-in-out)
+
+.ball_1
+  background-color: #cb2025
+  top: 0
+  left: 0
+
+.ball_2
+  background-color: #f8b334
+  top: 0
+  left: 24px
+
+.ball_3
+  background-color: #00a096
+  top: 24px
+  left: 0
+
+.ball_4
+  background-color: #97bf0d
+  top: 24px
+  left: 24px
+
++keyframes(animball_one)
+  0%
+    position: absolute
+  50%
+    top: 12px
+    left: 12px
+    position: absolute
+    opacity: 0.5
+  100%
+    position: absolute
+
+
++keyframes(animball_two)
+  0%
+    +transform(rotate(0deg) scale(1))
+  50%
+    +transform(rotate(360deg) scale(1.3))
+  100%
+    +transform(rotate(720deg) scale(1))

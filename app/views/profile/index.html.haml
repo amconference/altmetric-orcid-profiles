@@ -1,1 +1,9 @@
 %h1 Altmetric ORCiD Profile
+
+%form#orcid-submit-form
+  %input{type: :text, placeholder: "Enter your ORCiD ID"}
+  %button{type: :submit} Show my profile
+
+#orcid-profile-results
+#orcid-profile-results-loading= render 'loader'
+  

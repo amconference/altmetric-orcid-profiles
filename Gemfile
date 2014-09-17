@@ -8,7 +8,9 @@ gem 'compass-rails'
 gem 'sass-rails', '~>5.0.0.beta1'
 gem 'closure-compiler'
 gem 'coffee-rails'
-gem 'zepto-rails'
+gem 'jquery-rails'
+
+gem 'nokogiri'
 
 group :development, :test do
   gem 'spring'
