@@ -2,12 +2,12 @@
   %h1
     Profile for #{ @orcid_profile.name }
     %small
-      = link_to 'ORCID profile', "http://orcid.org/#{params[:orcid_id]}", target: :_blank
+      = link_to 'ORCID profile', "http://orcid.org/#{ params[:orcid_id] }", target: :_blank
   - if @orcid_profile.bio
     %p= @orcid_profile.bio
+
 .left-panel
-  %h2 Works
-  %ul
+  %ul.works_list{'data-posts' => @orcid_profile.altmetric_posts.to_json }
     - @orcid_profile.works.each do |work|
       %li
         %article.work
@@ -23,3 +23,5 @@
             .meta
               = link_to work.doi, "http://dx.doi.org/#{work.doi}", target: :_blank, class: :doi
 .right-panel
+  #graph
+    %svg

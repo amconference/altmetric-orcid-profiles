@@ -10,7 +10,7 @@ $ ->
     e.preventDefault()
     window.location.href = "/#{ $('input[type=text]', this).val() }"
 
-  $('article.work a:not(.doi)').on 'click', (e) ->
+  $('.profile-content-wrapper').on 'click', 'article.work a:not(.doi)', (e) ->
     e.preventDefault()
     window.lightbox.show $(this).attr('href')
 
@@ -23,3 +23,14 @@ $ ->
     .done (data,status,xhr) ->
       loading_thingy.hide()
       content_wrapper.html data
+      window.load_graph()
+
+
+  window.load_graph = ->
+    works_list = $('.works_list')
+    raw_data = works_list.data('posts')
+    data = {}
+    for item in raw_data
+      data[item.post_type] ||= []
+      data[item.post_type].push item.posted_on
+    window.plotTimes data

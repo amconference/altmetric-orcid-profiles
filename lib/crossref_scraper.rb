@@ -1,6 +1,6 @@
 class CrossrefScraper
 
-  BASE_URI = "http://search.crossref.org/links"
+  BASE_URI = 'http://search.crossref.org/links'
 
   def doi_for_title title
     begin
@@ -9,7 +9,7 @@ class CrossrefScraper
       $redis.setex key, 1.hour.to_i, data
       return data
     rescue
-      puts "Got exception when Scraping Crossref"
+      puts 'Got exception when Scraping Crossref'
       return nil
     end
   end
@@ -18,7 +18,7 @@ class CrossrefScraper
 
   def send_crossref_request title
     crossref_response = Unirest.post BASE_URI,
-      headers: { :"Content-Type" => "application/json" },
+      headers: { :'Content-Type' => 'application/json' },
       parameters: [title].to_json
     if crossref_response.code == 200
       has_match = crossref_response.body['results'][0]['match']

@@ -3,11 +3,13 @@ require 'open-uri'
 class OrcidProfile
 
   class Work
-    attr_reader :title, :doi
+    attr_reader :title, :subtitle, :doi
 
     def initialize element
-      @title = element.css("title").text
-      @doi   = element.css("work-external-identifier-id").text
+      @element = element
+      @title    = get_work_detail 'title'
+      @subtitle = get_work_detail 'subtitle'
+      @doi      = get_work_detail 'work-external-identifier-id'
       scrape_crossref unless has_doi?
     end
 
@@ -21,18 +23,26 @@ class OrcidProfile
 
     private
 
+    def get_work_detail(field_name)
+      @element.css(field_name).text
+    end
+
     def scrape_crossref
       @doi = CrossrefScraper.new.doi_for_title @title
     end
   end
 
-  ORCID_API_BASE_URL = "http://pub.orcid.org"
+  ORCID_API_BASE_URL = 'http://pub.orcid.org'
 
   attr_reader :id, :works
 
   def initialize orcid_id
     @id    = orcid_id
     @works = fetch('orcid-works').xpath('//xmlns:orcid-work').map { |n| Work.new(n) }
+  end
+
+  def altmetric_posts
+    @works.map(&:altmetric_article).compact.flatten.map(&:posts).flatten
   end
 
   def name

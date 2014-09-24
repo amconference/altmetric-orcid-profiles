@@ -22,7 +22,6 @@ function plotTimes(data){
     allDates.push(i);
   }
 
-  console.log(allDates);
 
   //format finalData with counts for each date
   for (key in data) {
@@ -48,10 +47,9 @@ function plotTimes(data){
   }
 
 
-  console.log(finalData);
-
   nv.addGraph(function() {
     var chart = nv.models.multiBarChart()
+    .stacked(true)
     .margin({right: 100})
     .reduceXTicks(true)   //If 'false', every single x-axis tick label will be rendered.
     .rotateLabels(0)      //Angle to rotate x-axis labels.
