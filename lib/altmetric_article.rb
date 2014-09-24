@@ -2,9 +2,6 @@ require 'open-uri'
 
 class AltmetricArticle
 
-  include ActiveSupport::Configurable
-  include ActionController::Caching
-
   def initialize work
     @work = work
     @data = fetch if @work.doi
