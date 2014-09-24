@@ -2,15 +2,20 @@
 %hr
 
 %h1 Profile for #{ @orcid_profile.name }
-%h2 Works
-%ul
-  - @orcid_profile.works.each do |work|
-    %li.work
-      - if ama = work.altmetric_article
-        %a{href: ama.details_uri, target: :_blank}
-          %img{src: ama.badge_uri}
-        %a{href: ama.details_uri, target: :_blank}
-          %h3= work.title
-      - else
-        %h3= work.title
-      %h4= work.doi
+
+.left-panel
+  %h2 Works
+  %ul
+    - @orcid_profile.works.each do |work|
+      %li.work
+        - if ama = work.altmetric_article
+          %a{href: ama.details_uri, target: :_blank}
+            %img{src: ama.badge_uri}
+          %a{href: ama.details_uri, target: :_blank}
+            %h3.title= work.title
+        - else
+          %h3.title= work.title
+        - if work.doi
+          %h4
+            %a.doi{href: "http://dx.doi.org/#{work.doi}", target: :_blank}= work.doi
+.right-panel
