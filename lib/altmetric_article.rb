@@ -8,7 +8,7 @@ class AltmetricArticle
   end
 
   def badge_uri
-    @data['images']['large']
+    @data['images']['medium']
   end
 
   def details_uri

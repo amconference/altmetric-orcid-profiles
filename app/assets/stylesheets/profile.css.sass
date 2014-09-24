@@ -1,3 +1,22 @@
+body
+  font-family: Helvetica, Arial, sans-serif
+
+ul
+  @include no-bullets
+
+li.work
+  @include clearfix
+  margin:
+    bottom: 10px
+  padding:
+    left: 110px
+  padding-bottom: 10px
+  border-bottom: 1px solid #ddd
+  img
+    float: left
+    margin-left: -110px
+
+
 #orcid-profile-results,
 #orcid-profile-results-loading
   display: none
