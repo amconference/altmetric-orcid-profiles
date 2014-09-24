@@ -19,8 +19,8 @@ class OrcidProfile
     @name = fetch.css('credit-name').text
     @works = []
     works = fetch 'orcid-works'
-    for node in works.xpath '//xmlns:orcid-work'
-      @works << node.xpath '//xmlns:work-external-identifier-id'
+    for node in works.xpath('//xmlns:orcid-work')
+      @works << node.xpath('//xmlns:work-external-identifier-id')
     end
     puts @works.inspect
   end

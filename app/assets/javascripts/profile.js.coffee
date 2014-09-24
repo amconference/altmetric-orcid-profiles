@@ -8,13 +8,4 @@ $ ->
 
   $('#orcid-submit-form').on 'submit', (e) ->
     e.preventDefault()
-    $.ajax
-      action: 'get'
-      url: "/#{ $('input[type=text]', this).val() }"
-      beforeSend: ->
-        elm_results.hide()
-        elm_loading.show()
-    .done (data, status, xhr) ->
-        elm_loading.hide()
-        elm_results.html data
-        elm_results.show() 
+    window.location.href = "/#{ $('input[type=text]', this).val() }"
