@@ -2,7 +2,7 @@
 %h2 Works
 %ul
   - @orcid_profile.works.each do |work|
-    %li
+    %li.work
       - if ama = work.altmetric_article
         %a{href: ama.details_uri, target: :_blank}
           %img{src: ama.badge_uri}
