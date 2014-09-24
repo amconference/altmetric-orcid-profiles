@@ -2,7 +2,7 @@
   %h1
     Profile for #{ @orcid_profile.name }
     %small
-    = link_to 'ORCID profile', 'http://orcid.org/', target: :_blank
+      = link_to 'ORCID profile', "http://orcid.org/#{ params[:orcid_id] }", target: :_blank
 
 .left-panel
   %h2 Works
