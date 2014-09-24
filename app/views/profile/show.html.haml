@@ -1,2 +1,7 @@
 %h1 Profile for #{ @orcid_profile.name }
-%pre= @orcid_profile.works.inspect
+%h2 Works
+%ul
+  - @orcid_profile.works.each do |work|
+    %li
+      %h3= work.title
+      %h4= work.doi
