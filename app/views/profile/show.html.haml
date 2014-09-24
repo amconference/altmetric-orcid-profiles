@@ -3,5 +3,8 @@
 %ul
   - @orcid_profile.works.each do |work|
     %li
+      - if ama = work.altmetric_article
+        %a{href: ama.details_uri, target: :_blank}
+          %img{src: ama.badge_uri}
       %h3= work.title
       %h4= work.doi
