@@ -29,13 +29,27 @@ $ ->
   window.load_graph = ->
 
     # Graph
+    colours =
+      twitter: "#2F90B9"
+      f1000: "#CB2D2D"
+      policy: "#9f79f2"
+      blogs: "#FFC200"
+      news: "#B60000"
+      peer_reviews: "#333"
+      weibo: "#df931b"
+      facebook: "#2445BD"
+      googleplus: "#912470"
+      q_a: "#888"
+      reddit: "#B9DDEB"
+      video: "#98C973"
+
     works_list = $('.works_list')
     raw_data = works_list.data('posts')
     data = {}
     for item in raw_data
       data[item.post_type] ||= []
       data[item.post_type].push item.posted_on
-    window.plotTimes data
+    window.plotTimes data, colours
 
     # Totals
     totals = $('#totals')

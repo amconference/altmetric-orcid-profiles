@@ -67,8 +67,13 @@ function plotTimes(data, colors){
     .call(chart);
 
   nv.utils.windowResize(chart.update);
-
   return chart;
 
+  }, function(){
+  d3.selectAll(".nv-bar").on('click',
+   function(a,b,c){
+     window.lightbox.show(window.location.href + "/posts/" + encodeURIComponent(a.x.toJSON().replace('.', ',')) + "/" + a.series);
+     return false;
+   });
   });
 }
