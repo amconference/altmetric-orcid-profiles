@@ -17,7 +17,7 @@ class OrcidProfile
     end
 
     private
-    
+
     def scrape_crossref
       @doi = CrossrefScraper.doi_for_title @title
     end
