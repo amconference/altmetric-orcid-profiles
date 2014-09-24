@@ -28,7 +28,8 @@ class AltmetricArticle
   private
 
   def path
-    "doi/#{@work.doi}"
+    doi_param = CGI::escape @work.doi
+    "doi/#{doi_param}"
   end
 
   def full_path
