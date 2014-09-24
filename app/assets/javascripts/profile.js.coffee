@@ -24,6 +24,9 @@ $ ->
       loading_thingy.hide()
       content_wrapper.html data
       window.load_graph()
+    .fail ->
+      alert "We weren't able to load your ORCID profile - sorry!"
+      window.location.href = '/'
 
 
   window.load_graph = ->
