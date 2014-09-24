@@ -6,8 +6,8 @@ class OrcidProfile
     attr_reader :title, :doi
 
     def initialize element
-      @title = element.css("title").text
-      @doi   = element.css("work-external-identifier-id").text
+      @title = element.css('title').text
+      @doi   = element.css('work-external-identifier-id').text
       scrape_crossref unless has_doi?
     end
 
@@ -26,7 +26,7 @@ class OrcidProfile
     end
   end
 
-  ORCID_API_BASE_URL = "http://pub.orcid.org"
+  ORCID_API_BASE_URL = 'http://pub.orcid.org'
 
   attr_reader :id, :works
 

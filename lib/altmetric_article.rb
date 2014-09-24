@@ -28,7 +28,7 @@ class AltmetricArticle
   end
 
   def details_uri
-    @data['details_url'].to_s + "&embedded=true" if has_data?
+    @data['details_url'].to_s + '&embedded=true' if has_data?
   end
 
   def has_data?
@@ -42,7 +42,7 @@ class AltmetricArticle
     end.flatten
   end
 
-  ALTMETRIC_API_BASE_URL = "http://api.altmetric.com/v1"
+  ALTMETRIC_API_BASE_URL = 'http://api.altmetric.com/v1'
 
   private
 
