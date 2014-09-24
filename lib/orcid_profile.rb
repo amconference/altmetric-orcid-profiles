@@ -28,16 +28,24 @@ class OrcidProfile
 
   ORCID_API_BASE_URL = "http://pub.orcid.org"
 
-  attr_reader :name, :id, :works
+  attr_reader :id, :works
 
   def initialize orcid_id
     @id    = orcid_id
-    @name  = fetch.css('credit-name').text
     @works = fetch('orcid-works').xpath('//xmlns:orcid-work').map { |n| Work.new(n) }
   end
 
   def altmetric_posts
     @works.map(&:altmetric_article).compact.flatten.map(&:posts)
+  end
+  
+  def name
+    name = fetch.css('credit-name').text
+    name = "#{fetch.css('given-names').text} #{fetch.css('family-name').text}" if name.blank?
+  end
+
+  def bio
+    name = fetch.css('biography').text
   end
 
   private
