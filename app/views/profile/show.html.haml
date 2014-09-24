@@ -24,5 +24,5 @@
             %h1.title= work.title
           - if work.doi.present?
             .meta
-              = link_to work.doi, "http://dx.doi.org/#{work.doi}", target: :_blank
+              = link_to work.doi, "http://dx.doi.org/#{work.doi}", target: :_blank, class: :doi
 .right-panel
