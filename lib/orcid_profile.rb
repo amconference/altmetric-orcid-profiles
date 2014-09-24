@@ -36,8 +36,11 @@ class OrcidProfile
   end
 
   def name
-    name = fetch.css('credit-name').text
-    name = "#{fetch.css('given-names').text} #{fetch.css('family-name').text}" if name.blank?
+    @name ||= begin
+      name = fetch.css('credit-name').text
+      name = "#{fetch.css('given-names').text} #{fetch.css('family-name').text}" if name.blank?
+      name
+    end
   end
 
   def bio
