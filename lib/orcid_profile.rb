@@ -36,6 +36,9 @@ class OrcidProfile
     @works = fetch('orcid-works').xpath('//xmlns:orcid-work').map { |n| Work.new(n) }
   end
 
+  def altmetric_posts
+    @works.map(&:altmetric_article).compact.flatten.map(&:posts)
+  end
 
   private
 

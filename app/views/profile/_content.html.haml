@@ -6,7 +6,7 @@
 
 .left-panel
   %h2 Works
-  %ul
+  %ul.works_list{'data-posts' => @orcid_profile.altmetric_posts.to_json }
     - @orcid_profile.works.each do |work|
       %li
         %article.work
