@@ -13,6 +13,9 @@ gem 'jquery-rails'
 
 gem 'nokogiri'
 
+gem 'better_errors'
+gem 'binding_of_caller'
+
 group :development, :test do
   gem 'spring'
 end
