@@ -33,5 +33,4 @@ $ ->
     for item in raw_data
       data[item.post_type] ||= []
       data[item.post_type].push item.posted_on
-    console.log data
     window.plotTimes data
