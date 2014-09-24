@@ -7,16 +7,19 @@ class AltmetricArticle
 
   def initialize work
     @work = work
-    data  = fetch if @work.doi
-    @data = data if @work.doi
+    @data = fetch if @work.doi
   end
 
   def badge_uri
-    @data['images']['medium']
+    if has_data?
+      @data['images']['medium']
+    else
+      "http://fastly.altmetric.com/?size=100&score=?&types=????????"
+    end
   end
 
   def details_uri
-    @data['details_url']
+    @data['details_url'] if has_data?
   end
 
   def has_data?
