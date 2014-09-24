@@ -1,3 +1,5 @@
+$type_colors: (twitter #2F90B9) (f1000 #CB2D2D) (policy #9f79f2) (blogs #FFC200) (news #B60000) (peer_reviews #333) (weibo #df931b) (facebook #2445BD) (googleplus #912470) (q_a #888) (reddit #B9DDEB) (video #98C973)
+
 body
   font-family: Helvetica, Arial, sans-serif
 
@@ -31,16 +33,20 @@ a.doi
   &:visited
     color: #999
 
+h2
+  padding-top: 0
+  margin-top: 0
+
 .left-panel
-  width: 50%
+  width: 40%
   float: left
-  padding: 10px 20px
+  padding: 0 20px 10px 20px
   border-right: 1px solid #ccc
 
 .right-panel
-  width: 50%
+  width: 60%
   float: right
-  padding: 10px 20px
+  padding: 0 20px 10px 20px
 
 #profile-form-container
   text-align: center
@@ -54,6 +60,39 @@ a.doi
   height: 600px
 
 
+#totals
+  overflow: hidden
+  +trailer(1)
+  font-weight: lighter
+  .total_wrapper
+    width: 20%
+    float: left
+    padding: 5px
+  .total
+    padding: 10px
+    background-color: #333
+    color: white
+    +trailer(0.5)
+    position: relative
+    height: 100px
+  .type,.value
+    position: absolute
+  .type
+    top: 10px
+    left: 10px
+    text-transform: uppercase
+    font-weight: bold
+  .value
+    bottom: 10px
+    right: 10px
+    font-size: 3em
+  $this-name: 'unknown'
+  $this-color: #333
+  @each $color in $type_colors
+    $this-name: nth($color,1)
+    $this-color: nth($color,2)
+    .total.#{ $this-name }
+      background: $this-color
 
 
 .profile-loading-indicator

@@ -7,6 +7,7 @@
     %p= @orcid_profile.bio
 
 .left-panel
+  %h2 Published works
   %ul.works_list{'data-posts' => @orcid_profile.altmetric_posts.to_json }
     - @orcid_profile.works.each do |work|
       %li
@@ -23,5 +24,7 @@
             .meta
               = link_to work.doi, "http://dx.doi.org/#{work.doi}", target: :_blank, class: :doi
 .right-panel
+  %h2 Altmetric stats
+  #totals
   #graph
     %svg

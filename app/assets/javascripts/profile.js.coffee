@@ -27,6 +27,8 @@ $ ->
 
 
   window.load_graph = ->
+
+    # Graph
     works_list = $('.works_list')
     raw_data = works_list.data('posts')
     data = {}
@@ -34,3 +36,11 @@ $ ->
       data[item.post_type] ||= []
       data[item.post_type].push item.posted_on
     window.plotTimes data
+
+    # Totals
+    totals = $('#totals')
+    for key, value of data
+      elm = $("<div class='total_wrapper'><div class='total #{key.replace('&', '_')}'><span class='type'/><span class='value'/></div></div>")
+      elm.find('.type').text key
+      elm.find('.value').text value.length
+      totals.append elm
