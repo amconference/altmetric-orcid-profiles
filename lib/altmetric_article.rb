@@ -2,12 +2,9 @@ require 'open-uri'
 
 class AltmetricArticle
 
-  include ActiveSupport::Configurable
-  include ActionController::Caching
-
   def initialize work
     @work = work
-    @data = fetch("doi/#{@work.doi}") if @work.doi
+    @data = fetch if @work.doi
   end
 
   def badge_uri
@@ -30,12 +27,22 @@ class AltmetricArticle
 
   private
 
-  def fetch path = ""
-    full_path = make_uri(path)
-    key = "altmetric.api_cache.#{ full_path }"
+  def path
+    "doi/#{@work.doi}"
+  end
+
+  def full_path
+    make_uri(path)
+  end
+
+  def cache_key
+    "altmetric.api_cache.#{ full_path }"
+  end
+
+  def fetch
     begin
-      data = $redis.get(key) || open(full_path).read
-      $redis.setex key, 1.hour.to_i, data
+      data = get_data
+      set_cache data
       return JSON.parse data
     rescue OpenURI::HTTPError => ex
       puts "altmetric.com 404 for #{full_path}"
@@ -43,7 +50,15 @@ class AltmetricArticle
     end
   end
 
- def make_uri path
+  def get_data
+    $redis.get(cache_key) || open(full_path).read
+  end
+
+  def set_cache(data)
+    $redis.setex cache_key, 1.hour.to_i, data
+  end
+
+  def make_uri path
     "#{ALTMETRIC_API_BASE_URL}/#{path}"
   end
 
