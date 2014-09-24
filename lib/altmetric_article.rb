@@ -2,6 +2,8 @@ require 'open-uri'
 
 class AltmetricArticle
 
+  BADGE_404 = 'http://fastly.altmetric.com/?size=100&score=?&types=????????'
+
   def initialize work
     @work = work
     @data = fetch if @work.doi
@@ -11,7 +13,7 @@ class AltmetricArticle
     if has_data?
       @data['images']['medium']
     else
-      "http://fastly.altmetric.com/?size=100&score=?&types=????????"
+      BADGE_404
     end
   end
 

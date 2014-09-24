@@ -1,21 +1,26 @@
 = render 'profile_form'
 %hr
 
-%h1 Profile for #{ @orcid_profile.name }
+%h1
+  Profile for #{ @orcid_profile.name }
+  %small
+    %a{href: "http://orcid.org/", target: :_blank} ORCID profile
 
 .left-panel
   %h2 Works
   %ul
     - @orcid_profile.works.each do |work|
-      %li.work
-        - if ama = work.altmetric_article
-          %a{href: ama.details_uri, target: :_blank}
-            %img{src: ama.badge_uri}
-          %a{href: ama.details_uri, target: :_blank}
-            %h3.title= work.title
-        - else
-          %h3.title= work.title
-        - if work.doi
-          %h4
-            %a.doi{href: "http://dx.doi.org/#{work.doi}", target: :_blank}= work.doi
+      %li
+        %article.work
+          - if ama = work.altmetric_article
+            %a{href: ama.details_uri, target: :_blank}
+              %img{src: ama.badge_uri}
+            %a{href: ama.details_uri, target: :_blank}
+              %h3.title= work.title
+          - else
+            %img{src: AltmetricArticle::BADGE_404}
+            %h1.title= work.title
+          - if work.doi.present?
+            .meta
+              %a.doi{href: "http://dx.doi.org/#{work.doi}", target: :_blank}= work.doi
 .right-panel

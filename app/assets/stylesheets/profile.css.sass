@@ -3,8 +3,13 @@ body
 
 ul
   @include no-bullets
+  margin: 0
+  padding: 0
+  li
+    margin: 0
+    padding: 0
 
-li.work
+.work
   @include clearfix
   margin:
     bottom: 10px
@@ -16,6 +21,22 @@ li.work
     float: left
     margin-left: -110px
 
+a.doi
+  text-decoration: none
+  &:link
+    color: #666
+  &:visited
+    color: #999
+
+h3.title
+  margin-top: 0
+
+.left-panel
+  width: 45%
+  float: left
+  margin-right: 5px
+  padding-right: 5px
+  border-right: 1px solid #ccc
 
 #orcid-profile-results,
 #orcid-profile-results-loading
