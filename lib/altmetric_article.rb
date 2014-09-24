@@ -18,7 +18,7 @@ class AltmetricArticle
   end
 
   def details_uri
-    @data['details_url'] if has_data?
+    @data['details_url'] + "&embedded=true" if has_data?
   end
 
   def has_data?

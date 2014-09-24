@@ -9,3 +9,7 @@ $ ->
   $('#orcid-submit-form').on 'submit', (e) ->
     e.preventDefault()
     window.location.href = "/#{ $('input[type=text]', this).val() }"
+
+  $('article.work a:not(.doi)').on 'click', (e) ->
+    e.preventDefault()
+    window.lightbox.show $(this).attr('href')
