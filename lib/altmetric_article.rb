@@ -3,6 +3,7 @@ require 'open-uri'
 class AltmetricArticle
 
   BADGE_404 = 'http://fastly.altmetric.com/?size=100&score=?&types=????????'
+  API_KEY = "decafbad"
 
   def initialize work
     @work = work
@@ -31,7 +32,7 @@ class AltmetricArticle
 
   def path
     doi_param = CGI::escape @work.doi
-    "doi/#{doi_param}"
+    "fetch/doi/#{doi_param}"
   end
 
   def full_path
@@ -62,7 +63,7 @@ class AltmetricArticle
   end
 
   def make_uri path
-    "#{ALTMETRIC_API_BASE_URL}/#{path}"
+    "#{ALTMETRIC_API_BASE_URL}/#{path}?key=#{API_KEY}"
   end
 
 end
