@@ -3,8 +3,13 @@ body
 
 ul
   @include no-bullets
+  margin: 0
+  padding: 0
+  li
+    margin: 0
+    padding: 0
 
-li.work
+.work
   @include clearfix
   margin:
     bottom: 10px
@@ -15,7 +20,23 @@ li.work
   img
     float: left
     margin-left: -110px
+  h1
+    font-size: 18px
+    margin-top: 0
 
+a.doi
+  text-decoration: none
+  &:link
+    color: #666
+  &:visited
+    color: #999
+
+.left-panel
+  width: 45%
+  float: left
+  margin-right: 5px
+  padding-right: 5px
+  border-right: 1px solid #ccc
 
 #profile-form-container
   text-align: center
