@@ -10,7 +10,7 @@ $ ->
     e.preventDefault()
     window.location.href = "/#{ $('input[type=text]', this).val() }"
 
-  $('article.work a:not(.doi)').on 'click', (e) ->
+  $('.profile-content-wrapper').on 'click', 'article.work a:not(.doi)', (e) ->
     e.preventDefault()
     window.lightbox.show $(this).attr('href')
 
