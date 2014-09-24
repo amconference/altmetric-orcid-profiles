@@ -10,7 +10,7 @@ $ ->
     e.preventDefault()
     window.location.href = "/#{ $('input[type=text]', this).val() }"
 
-  $('article.work a:not(.doi)').on 'click', (e) ->
+  $('.profile-content-wrapper').on 'click', 'article.work a:not(.doi)', (e) ->
     e.preventDefault()
     window.lightbox.show $(this).attr('href')
 
@@ -33,5 +33,4 @@ $ ->
     for item in raw_data
       data[item.post_type] ||= []
       data[item.post_type].push item.posted_on
-    console.log data
     window.plotTimes data

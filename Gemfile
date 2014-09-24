@@ -20,3 +20,4 @@ group :development, :test do
   gem 'spring'
 end
 
+gem 'pry-rails', group: :development

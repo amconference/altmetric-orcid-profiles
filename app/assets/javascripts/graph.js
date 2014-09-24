@@ -22,7 +22,6 @@ function plotTimes(data){
     allDates.push(i);
   }
 
-  console.log(allDates);
 
   //format finalData with counts for each date
   for (key in data) {
@@ -47,8 +46,6 @@ function plotTimes(data){
     }
   }
 
-
-  console.log(finalData);
 
   nv.addGraph(function() {
     var chart = nv.models.multiBarChart()

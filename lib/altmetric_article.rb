@@ -1,18 +1,21 @@
 require 'open-uri'
 
-class AltmetricArticle
-
-  class Post
-    attr_accessor :data, :post_type, :posted_on
-    def initialize post_type, post
-      @data = post
-      @post_type = post_type
-      @posted_on = Time.parse post['posted_on'] rescue nil
-    end
+class Post
+  attr_accessor :data, :post_type, :posted_on
+  def initialize post_type, post
+    @data = post
+    @post_type = post_type
+    @posted_on = Time.parse post['posted_on'] rescue nil
   end
+end
+
+
+class AltmetricArticle
 
   BADGE_404 = 'http://fastly.altmetric.com/?size=100&score=?&types=????????'
   API_KEY = "decafbad"
+
+  attr_accessor :data
 
   def initialize work
     @work = work
@@ -28,7 +31,7 @@ class AltmetricArticle
   end
 
   def details_uri
-    @data['details_url'].to_s + '&embedded=true' if has_data?
+    "https://www.altmetric.com/details.php?doi=#{@work.doi}" + "&embedded=true" if @work.doi
   end
 
   def has_data?
