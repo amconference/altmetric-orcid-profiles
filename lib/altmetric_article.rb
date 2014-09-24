@@ -25,7 +25,12 @@ class AltmetricArticle
 
   def fetch path = ""
     Rails.logger.info "Opening URI: #{make_uri(path)}"
-    JSON.parse open(make_uri(path)).read
+    begin
+      return JSON.parse open(make_uri(path)).read
+    rescue OpenURI::HTTPError => ex
+      puts "altmetric.com 404 for #{make_uri(path)}"
+      return nil
+    end 
   end
 
  def make_uri path
