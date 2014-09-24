@@ -24,7 +24,9 @@ class OrcidProfile
     private
 
     def get_work_detail(field_name)
-      @element.css(field_name).text
+      if (@element.css(field_name).first)
+        return @element.css(field_name).first.text
+      end
     end
 
     def scrape_crossref
