@@ -16,6 +16,7 @@
               = image_tag ama.badge_uri
             = link_to ama.details_uri, :target => :_blank do
               %h1.title= work.title
+            %h4.subtitle= work.subtitle
           - else
             = image_tag AltmetricArticle::BADGE_404
             %h1.title= work.title
