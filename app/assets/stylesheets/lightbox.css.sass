@@ -1,0 +1,55 @@
+#lightbox_overlay
+  +transition(all 300ms ease-in-out)
+  +opacity(0)
+  position: fixed
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  z-index: 1000
+  background-color: rgba(0,0,0,0.7)
+  &.visible
+    +opacity(1)
+
+#lightbox_content
+  +transition(opacity 250ms ease, transform 250ms ease)
+  +box-shadow(0 0 20px rgba(0,0,0,0.75))
+  +opacity(0)
+  +transform(translateY(200px), rotate(10deg))
+  margin: 0 auto
+  position: fixed
+  top: 100px
+  bottom: 100px
+  left: 100px
+  right: 100px
+  overflow: hidden
+  background:
+    color: white
+    position: center center
+    repeat: no-repeat
+  &.visible
+    +scale(1)
+    +opacity(1)
+
+#lightbox_inner
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  
+#lightbox_iframe
+  width: 100%
+  height: 100%
+  border: 0
+
+#lightbox_close
+  width: 30px
+  height: 30px
+  position: fixed
+  top: -15px
+  right: -15px
+  background-image: image-url('close.png')
+  background:
+    repeat: no-repeat
+    position: center center
