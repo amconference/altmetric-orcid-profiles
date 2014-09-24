@@ -45,7 +45,7 @@ class AltmetricArticle
     end.flatten
   end
 
-  ALTMETRIC_API_BASE_URL = "http://api.altmetric.com/v1"
+  ALTMETRIC_API_BASE_URL = 'http://api.altmetric.com/v1'
 
   private
 
