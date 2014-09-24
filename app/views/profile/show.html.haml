@@ -6,8 +6,7 @@
 %ul
   - @orcid_profile.works.each do |work|
     %li.work
-      - ama = work.altmetric_article
-      - if ama.try(:has_data?)
+      - if ama = work.altmetric_article
         %a{href: ama.details_uri, target: :_blank}
           %img{src: ama.badge_uri}
         %a{href: ama.details_uri, target: :_blank}

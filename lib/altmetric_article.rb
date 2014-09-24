@@ -7,18 +7,19 @@ class AltmetricArticle
 
   def initialize work
     @work = work
-    data = fetch "doi/#{@work.doi}" if @work.doi
-    Rails.logger.info "+"*100
-    Rails.logger.info data
-    @data = data if @work.doi
+    @data = fetch("doi/#{@work.doi}") if @work.doi
   end
 
   def badge_uri
-    @data['images']['medium']
+    if has_data?
+      @data['images']['medium']
+    else
+      "http://fastly.altmetric.com/?size=100&score=?&types=????????"
+    end
   end
 
   def details_uri
-    @data['details_url']
+    @data['details_url'] if has_data?
   end
 
   def has_data?
