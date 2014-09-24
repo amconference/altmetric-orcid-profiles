@@ -2,9 +2,10 @@
   .logo
   = render 'profile_form'
 
-%h1
-  Profile for #{ @orcid_profile.name }
-  %small
+.profile-header
+  %h1
+    Profile for #{ @orcid_profile.name }
+    %small
     = link_to 'ORCID profile', 'http://orcid.org/', target: :_blank
 
 .left-panel
