@@ -4,12 +4,17 @@ class CrossrefScraper
   include ActionController::Caching
 
   BASE_URI = "http://search.crossref.org/links"
-  
+
   def doi_for_title title
-    key = "crossref.api_cache.#{ title }"
-    data = $redis.get(key) || send_crossref_request(title)
-    $redis.setex key, 1.hour.to_i, data
-    data
+    begin
+      key = "crossref.api_cache.#{ title }"
+      data = $redis.get(key) || send_crossref_request(title)
+      $redis.setex key, 1.hour.to_i, data
+      return data
+    rescue
+      puts "Got exception when Scraping Crossref"
+      return nil
+    end
   end
 
   private
