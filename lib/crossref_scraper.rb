@@ -1,8 +1,5 @@
 class CrossrefScraper
 
-  include ActiveSupport::Configurable
-  include ActionController::Caching
-
   BASE_URI = "http://search.crossref.org/links"
 
   def doi_for_title title
