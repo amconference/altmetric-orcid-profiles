@@ -4,4 +4,8 @@
     %title Altmetric ORCID Profile
     = stylesheet_link_tag :application, media: :all
     = javascript_include_tag :application
+    %link{:type => "text/css", :rel => "stylesheet", :href => "//cdnjs.cloudflare.com/ajax/libs/nvd3/1.1.15-beta/nv.d3.css"}
+    %script(src="http://d3js.org/d3.v3.js")
+    %script(src="//cdnjs.cloudflare.com/ajax/libs/nvd3/1.1.15-beta/nv.d3.js")
+    %script(src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment.min.js")
   %body= yield
