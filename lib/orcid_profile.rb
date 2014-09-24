@@ -7,6 +7,19 @@ class OrcidProfile
     def initialize element
       @title = element.css("title").text
       @doi = element.css("work-external-identifier-id").text
+      scrape_crossref unless has_doi?
+    end
+    def altmetric_article
+      @altmetric_article ||= AltmetricArticle.new(self) if @doi.present?
+    end
+    def has_doi?
+      @doi.present?
+    end
+
+    private
+    
+    def scrape_crossref
+      @doi = CrossrefScraper.doi_for_title @title
     end
   end
 
