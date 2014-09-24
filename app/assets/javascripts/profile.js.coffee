@@ -13,3 +13,13 @@ $ ->
   $('article.work a:not(.doi)').on 'click', (e) ->
     e.preventDefault()
     window.lightbox.show $(this).attr('href')
+
+  content_wrapper = $('.profile-content-wrapper')
+  loading_thingy = $('.profile-loading-indicator')
+  if content_wrapper.length
+    $.ajax
+      action: 'get'
+      url: "#{ window.location.href }/content"
+    .done (data,status,xhr) ->
+      loading_thingy.hide()
+      content_wrapper.html data

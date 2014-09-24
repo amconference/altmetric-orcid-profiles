@@ -1,6 +1,6 @@
 class ProfileController < ApplicationController
-  def show
+  def content
     @orcid_profile = OrcidProfile.new params[:orcid_id]
-    render "show"
+    render partial: "content"
   end
 end

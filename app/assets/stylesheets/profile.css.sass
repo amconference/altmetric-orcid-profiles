@@ -50,53 +50,80 @@ a.doi
 #orcid-profile-results-loading
   display: none
 
-.loader_wrapper
+.profile-loading-indicator
   position: absolute
-  top: 120px
-  +animation(animball_two 700ms infinite ease-in-out)
-  width: 44px
-  height: 44px
+  top: 220px
+  left: 50%
+  margin-left: -88px
+  .loading-title
+    position: relative
+    top: -50px
+    color: #aaa
+    text-transform: uppercase
+
+.loader_wrapper
+  +animation(animball_two 1000ms infinite linear)
+  width: 176px
+  height: 176px
 
 .loader_element
-  width: 44px
-  height: 44px
+  width: 176px
+  height: 176px
   position: absolute
 
 .ball
-  width: 20px
-  height: 20px
+  width: 80px
+  height: 80px
   border-radius: 50%
   position: absolute
-
-.ball_1, .ball_2, .ball_3, .ball_4
-  +animation(animball_one 700ms infinite ease-in-out)
+  +animation(animball_one 1000ms infinite linear)
 
 .ball_1
-  background-color: #cb2025
+  background-color: #FF0000
   top: 0
   left: 0
 
 .ball_2
-  background-color: #f8b334
-  top: 0
-  left: 24px
+  background-color: #FFC200
+  top: -20px
+  left: 48px
 
 .ball_3
-  background-color: #00a096
-  top: 24px
-  left: 0
+  background-color: #9f79f2
+  top: 0
+  left: 96px
 
 .ball_4
-  background-color: #97bf0d
-  top: 24px
-  left: 24px
+  background-color: #74CFED
+  top: 48px
+  left: 124px
+
+.ball_5
+  background-color: #2445BD
+  top: 96px
+  left: 96px
+
+.ball_6
+  background-color: #E065BB
+  top: 124px
+  left: 48px
+
+.ball_7
+  background-color: #D5E8F0
+  top: 96px
+  left: 0
+
+.ball_8
+  background-color: #94DB5E
+  top: 48px
+  left: -20px
 
 +keyframes(animball_one)
   0%
     position: absolute
   50%
-    top: 12px
-    left: 12px
+    top: 48px
+    left: 48px
     position: absolute
     opacity: 0.5
   100%

@@ -1,0 +1,24 @@
+.profile-header
+  %h1
+    Profile for #{ @orcid_profile.name }
+    %small
+    = link_to 'ORCID profile', 'http://orcid.org/', target: :_blank
+
+.left-panel
+  %h2 Works
+  %ul
+    - @orcid_profile.works.each do |work|
+      %li
+        %article.work
+          - if ama = work.altmetric_article
+            = link_to ama.details_uri, :target => :_blank do
+              = image_tag ama.badge_uri
+            = link_to ama.details_uri, :target => :_blank do
+              %h1.title= work.title
+          - else
+            = image_tag AltmetricArticle::BADGE_404
+            %h1.title= work.title
+          - if work.doi.present?
+            .meta
+              = link_to work.doi, "http://dx.doi.org/#{work.doi}", target: :_blank, class: :doi
+.right-panel
