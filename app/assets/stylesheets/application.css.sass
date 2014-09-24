@@ -4,3 +4,78 @@
 
 body
   @include reset-body
+  font-family: "Helvetica Neue"
+  margin: 0
+  padding: 0
+
+button
+  font-family: "Helvetica Neue"
+
+#logo
+  width: 423px
+  height: 150px
+  background: image-url('logo.png')
+  margin: 60px auto
+
+#profile-form-container
+  width: 550px
+  margin: 0 auto
+
+p.intro
+  line-height: 1.4em
+
+#profile-form-container
+  #orcid-submit-form
+    input
+      +leader(0.5)
+      +trailer(0.5)
+      width: 100%
+      text-align: center
+      font-size: 2em
+      font-weight: 100
+      border: 1px #ddd solid
+      padding: 10px
+      +border-radius(5px)
+    button
+      +appearance(none)
+      background: #4488dd
+      color: white
+      padding: 10px 20px
+      font-size: 1.5em
+      border: none
+      +border-radius(5px)
+      cursor: pointer
+      &:hover
+        +opacity(0.8)
+
+#profile-form-container-header
+  padding: 10px 20px
+  border-bottom: 1px #ddd solid
+  overflow: hidden
+  .logo
+    width: 141px
+    height: 50px
+    background: image-url('logo.png')
+    background-size: 100%
+    float: left
+
+  #orcid-submit-form
+    float: right
+    padding: 5px 0
+    input
+      font-size: 1.2em
+      font-weight: 100
+      border: 1px #ddd solid
+      padding: 5px
+      +border-radius(5px)
+    button
+      +appearance(none)
+      background: #4488dd
+      color: white
+      padding: 7px 10px
+      font-size: 1.1em
+      border: none
+      +border-radius(5px)
+      cursor: pointer
+      &:hover
+        +opacity(0.8)
