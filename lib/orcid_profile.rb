@@ -17,12 +17,7 @@ class OrcidProfile
   def initialize orcid_id
     @id = orcid_id
     @name = fetch.css('credit-name').text
-    @works = []
-    works = fetch 'orcid-works'
-    for node in works.xpath('//xmlns:orcid-work')
-      @works << node.xpath('//xmlns:work-external-identifier-id')
-    end
-    puts @works.inspect
+    @works = fetch('orcid-works').xpath('//xmlns:orcid-work').map { |n| Work.new(n) }
   end
 
 
