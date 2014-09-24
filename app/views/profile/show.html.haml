@@ -1,10 +1,16 @@
+= render 'profile_form'
+%hr
+
 %h1 Profile for #{ @orcid_profile.name }
 %h2 Works
 %ul
   - @orcid_profile.works.each do |work|
-    %li
+    %li.work
       - if ama = work.altmetric_article
         %a{href: ama.details_uri, target: :_blank}
           %img{src: ama.badge_uri}
-      %h3= work.title
+        %a{href: ama.details_uri, target: :_blank}
+          %h3= work.title
+      - else
+        %h3= work.title
       %h4= work.doi
