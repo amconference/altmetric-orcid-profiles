@@ -2,6 +2,9 @@ require 'open-uri'
 
 class AltmetricArticle
 
+  include ActiveSupport::Configurable
+  include ActionController::Caching
+
   def initialize work
     @work = work
     @data = fetch "doi/#{@work.doi}" if @work.doi
@@ -24,8 +27,10 @@ class AltmetricArticle
   private
 
   def fetch path = ""
-    Rails.logger.info "Opening URI: #{make_uri(path)}"
-    JSON.parse open(make_uri(path)).read
+    key = "altmetric.api_cache.#{ path }"
+    data = $redis.get(key) || open(make_uri(path)).read
+    $redis.setex key, 1.hour.to_i, data
+    JSON.parse data
   end
 
  def make_uri path
