@@ -23,3 +23,15 @@ $ ->
     .done (data,status,xhr) ->
       loading_thingy.hide()
       content_wrapper.html data
+      window.load_graph()
+
+
+  window.load_graph = ->
+    works_list = $('.works_list')
+    raw_data = works_list.data('posts')
+    data = {}
+    for item in raw_data
+      data[item.post_type] ||= []
+      data[item.post_type].push item.posted_on
+    console.log data
+    window.plotTimes data

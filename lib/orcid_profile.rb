@@ -36,7 +36,7 @@ class OrcidProfile
   end
 
   def altmetric_posts
-    @works.map(&:altmetric_article).compact.flatten.map(&:posts)
+    @works.map(&:altmetric_article).compact.flatten.map(&:posts).flatten
   end
   
   def name
