@@ -19,7 +19,7 @@ $ ->
   if content_wrapper.length
     $.ajax
       action: 'get'
-      url: "#{ window.location.href }/content"
+      url: "#{ window.location.href.replace('#','') }/content"
     .done (data,status,xhr) ->
       loading_thingy.hide()
       content_wrapper.html data
