@@ -2,10 +2,11 @@
   .logo
   = render 'profile_form'
 
-%h1
-  Profile for #{ @orcid_profile.name }
-  %small
-    %a{href: "http://orcid.org/", target: :_blank} ORCID profile
+.profile-header
+  %h1
+    Profile for #{ @orcid_profile.name }
+    %small
+      %a{href: "http://orcid.org/", target: :_blank} ORCID profile
 
 .left-panel
   %h2 Works

@@ -8,6 +8,9 @@ body
   margin: 0
   padding: 0
 
+*
+  +box-sizing(border-box)
+
 button
   font-family: "Helvetica Neue"
 
@@ -52,6 +55,11 @@ p.intro
   padding: 10px 20px
   border-bottom: 1px #ddd solid
   overflow: hidden
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  background: rgba(255,255,255,0.9)
   .logo
     width: 141px
     height: 50px
@@ -83,6 +91,9 @@ a
   text-decoration: none
   &:hover
     text-decoration: underline
+
+.profile-header
+  padding: 60px 20px 0px 20px
 
 h1
   small
