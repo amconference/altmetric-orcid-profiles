@@ -44,7 +44,6 @@ GEM
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
     chunky_png (1.3.1)
-    closure-compiler (1.1.11)
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -122,6 +121,11 @@ GEM
       activesupport
       nokogiri (~> 1.6.0)
       rails-deprecated_sanitizer (>= 1.0.1)
+    rails_12factor (0.0.2)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.2)
+    rails_stdout_logging (0.0.3)
     railties (4.2.0.beta1)
       actionpack (= 4.2.0.beta1)
       activesupport (= 4.2.0.beta1)
@@ -157,6 +161,9 @@ GEM
     tilt (1.4.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    uglifier (2.5.3)
+      execjs (>= 0.3.0)
+      json (>= 1.8.0)
     unicorn (4.8.3)
       kgio (~> 2.6)
       rack
@@ -172,7 +179,6 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   binding_of_caller
-  closure-compiler
   coffee-rails
   compass-rails
   haml-rails
@@ -180,8 +186,10 @@ DEPENDENCIES
   nokogiri
   pry-rails
   rails (= 4.2.0.beta1)
+  rails_12factor
   redis
   sass-rails (~> 5.0.0.beta1)
   spring
+  uglifier
   unicorn
   unirest
