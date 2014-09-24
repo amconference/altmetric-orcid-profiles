@@ -19,7 +19,7 @@ class OrcidProfile
     private
 
     def scrape_crossref
-      @doi = CrossrefScraper.doi_for_title @title
+      @doi = CrossrefScraper.new.doi_for_title @title
     end
   end
 
@@ -37,7 +37,11 @@ class OrcidProfile
   private
 
   def fetch path = ""
-    Nokogiri::XML open(make_uri(path)).read
+    full_path = make_uri(path)
+    key = "orcid.api_cache.#{ full_path }"
+    data = $redis.get(key) || open(full_path).read
+    $redis.setex key, 1.hour.to_i, data
+    Nokogiri::XML data
   end
 
  def make_uri path
