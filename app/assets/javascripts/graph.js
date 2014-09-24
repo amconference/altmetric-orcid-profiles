@@ -1,5 +1,5 @@
 
-function plotTimes(data){
+function plotTimes(data, colors){
   var resolution = 'month'
   function roundDate(d){
     return new Date(moment(d).startOf(resolution));
@@ -42,7 +42,7 @@ function plotTimes(data){
             counts.push({x:new Date(bin),y:bins[bin]}); 
          }
        }
-       finalData.push({key:key, values:counts});
+       finalData.push({key:key, values:counts, color: colors[key]});
     }
   }
 
