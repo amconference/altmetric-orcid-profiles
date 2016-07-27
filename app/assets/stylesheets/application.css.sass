@@ -54,7 +54,7 @@ p.intro
         +opacity(0.8)
 
 #profile-form-container-header
-  padding: 10px 20px
+  padding: 0
   border-bottom: 1px #ddd solid
   overflow: hidden
   position: fixed
@@ -63,6 +63,9 @@ p.intro
   right: 0
   background: rgba(255,255,255,0.9)
   z-index: 1000
+  .bar
+    padding: 10px 20px
+    height: 70px
   .logo
     width: 141px
     height: 50px
@@ -97,7 +100,7 @@ a
     text-decoration: underline
 
 .profile-header
-  padding: 60px 20px 20px 20px
+  padding: 140px 20px 20px 20px
 
 h1
   small
@@ -105,3 +108,9 @@ h1
     a
       &:link, &:visited
         color: #999
+
+.notice
+  background: #ffffcc
+  padding: 1em
+  border-bottom: 1px solid #cccc99
+  line-height: 1.4
