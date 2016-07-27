@@ -76,11 +76,8 @@ class AltmetricArticle
   def get_data
     data = $redis.get(cache_key)
     return data if data.present?
-    begin
-      return open(full_path).read
-    rescue OpenURI::HTTPError
-      return open(full_path.gsub('doi', 'pmid')).read
-    end
+
+    open(full_path).read
   end
 
   def set_cache(data)
