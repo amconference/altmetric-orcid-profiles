@@ -13,7 +13,7 @@ end
 class AltmetricArticle
 
   BADGE_404 = 'http://fastly.altmetric.com/?size=100&score=?&types=????????'
-  API_KEY = "decafbad"
+  API_KEY = Rails.application.secrets.altmetric_api_key
 
   attr_accessor :data
 
