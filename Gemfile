@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.0.beta1'
+gem 'rails', '~> 4.2'
 gem 'redis', '~> 3.1'
 gem 'unirest', '~> 1.1'
 
